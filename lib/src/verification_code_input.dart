@@ -123,7 +123,7 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
       setState(() {
         _currentIdex = index + 1;
       });
-      SchedulerBinding.instance.addPostFrameCallback((_) {
+      SchedulerBinding.instance!.addPostFrameCallback((_) {
         FocusScope.of(context).requestFocus(_listFocusNode[index + 1]);
       });
     }
