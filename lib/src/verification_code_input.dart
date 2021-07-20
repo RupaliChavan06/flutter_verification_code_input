@@ -12,12 +12,12 @@ class VerificationCodeInput extends StatefulWidget {
   final bool autofocus;
   final bool forceUpperCase;
   VerificationCodeInput(
-      {Key key,
+      {Key? key,
       this.forceUpperCase = true,
-      this.onCompleted,
+      required this.onCompleted,
       this.keyboardType = TextInputType.number,
       this.length = 4,
-      this.itemDecoration,
+      required this.itemDecoration,
       this.itemSize = 50,
       this.textStyle = const TextStyle(fontSize: 25.0, color: Colors.black),
       this.autofocus = true})
@@ -34,7 +34,7 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
   final List<FocusNode> _listFocusNode = <FocusNode>[];
   final List<TextEditingController> _listControllerText =
       <TextEditingController>[];
-  List<String> _code = List();
+  List<String> _code = [];
   int _currentIdex = 0;
   @override
   void initState() {
@@ -137,14 +137,14 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
         }
         _currentIdex = index - 1;
       });
-      SchedulerBinding.instance.addPostFrameCallback((_) {
+      SchedulerBinding.instance?.addPostFrameCallback((_) {
         FocusScope.of(context).requestFocus(_listFocusNode[index - 1]);
       });
     }
   }
 
   List<Widget> _buildListWidget() {
-    List<Widget> listWidget = List();
+    List<Widget> listWidget = [];
     for (int index = 0; index < widget.length; index++) {
       double left = (index == 0) ? 0.0 : (widget.itemSize / 10);
       listWidget.add(Container(
